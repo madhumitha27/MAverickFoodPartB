@@ -1,0 +1,30 @@
+{% extends "crm/base.html"%}
+{% load crispy_forms_tags %}
+<div class="container">
+{% block content %}
+    {% if form.errors %}
+    <br />
+    <p>Your username and password didn't match. Please try again.</p>
+    {% endif %}
+    <br />
+    <br />
+    <form method="post" action="{% url 'login' %}">
+        <div class="center" style="margin-left: 80px">
+        <div class="row">
+            <div class="col-6" style="width: 40%">
+
+                {{ form.username|as_crispy_field}}
+            </div>
+            <div class="col-6" style="width: 40%">
+                {{ form.password|as_crispy_field}}
+            </div>
+        </div>
+        <!--{{ form.password|as_crispy_field}}-->
+        {% csrf_token %}
+
+        <button type="submit" class="save btn btn-primary" value="login">Login</button>
+        <input type="hidden" name="next" value="{{ next }}"/>
+        </div>
+    </form>
+{% endblock %}
+</div>

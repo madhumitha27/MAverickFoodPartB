@@ -1,0 +1,62 @@
+{% extends 'crm/base.html' %}
+{% block content %}
+    <body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+               <div class="panel panel-primary" style="margin-top: 20px;">
+                    <div class="panel-heading">Welcome!</div>
+                    <div class="panel-body">
+                        Maverick Food services, Ingredients For Your Success!.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <h2 style="padding-left: 15Px">Products Information</h2>
+    </div>
+    <div style="padding-bottom: 10px; float: right">
+         <a href="{% url 'crm:product_new' %}" class="row"><span
+                    class="btn btn-primary">Add Product</span></a>
+     </div>
+
+    <div>
+        <table class="table table-striped table-bordered table-hover">
+            <thead>
+            <tr class="bg-info">
+                <th>Customer</th>
+                <th>Product</th>
+                <th>Description</th>
+                <th>Quantity</th>
+                <th>Pickup Time</th>
+                <th>Charge</th>
+                <th colspan="3">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for product in products %}
+                <tr>
+                    <td>{{ product.cust_name }}</td>
+                    <td>{{ product.product }}</td>
+                     <td>{{ product.p_description }}</td>
+                    <td>{{ product.quantity }}</td>
+                    <td>{{ product.pickup_time }}</td>
+                    <td>{{ product.charge }}</td>
+                    <td><a href="{% url 'crm:product_edit' pk=product.pk %}"
+                           class="btn btn-warning">Edit</a>
+
+                   <td><a href="{% url 'crm:product_delete' pk=product.pk %}"
+                           onclick="return confirm('Are you sure you want to delete?')"
+                           class="btn btn-danger">Delete</a>
+                    </td>
+
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+    </body>
+{% endblock %}
+
