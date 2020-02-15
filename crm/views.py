@@ -24,7 +24,7 @@ def home(request):
 @login_required
 def customer_list(request):
     customer=Customer.objects.filter(created_date__lte=timezone.now())
-    return render(request,'crm\customer_list.html',{'customers':customer})
+    return render(request,'crm/customer_list.html',{'customers':customer})
 
 def signup_view(request):
     success_url = reverse_lazy ( 'crm:home' )
