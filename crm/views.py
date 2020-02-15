@@ -13,7 +13,7 @@ from django.db.models import Sum
 from django.contrib import messages
 from django.template.loader import get_template
 from django.template import Context
-import pdfkit
+
 
 now = timezone.now()
 def home(request):
